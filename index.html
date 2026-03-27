@@ -33,12 +33,25 @@
     header::before {
       content: "";
       position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 400px;
-      height: 400px;
-      background: rgba(212, 165, 116, 0.1);
+      top: -30%;
+      right: -5%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.08) 70%, transparent 100%);
       border-radius: 50%;
+      filter: blur(2px);
+    }
+    
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -20%;
+      left: 10%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(3px);
     }
     
     header h1 {
@@ -76,6 +89,36 @@
       padding: 6px 10px;
       border-radius: 6px;
       transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .insta-link {
+      background: rgba(212, 165, 116, 0.15);
+      color: #d4a574 !important;
+      font-weight: 600;
+      border: 2px solid #d4a574;
+      margin-left: 18px;
+      box-shadow: 0 2px 8px rgba(212, 165, 116, 0.2);
+    }
+    .insta-link:hover {
+      background: rgba(212, 165, 116, 0.3);
+      color: #1a3a4a !important;
+      box-shadow: 0 0 16px rgba(212, 165, 116, 0.5);
+      border-color: #1a3a4a;
+    }
+    .youtube-link {
+      background: rgba(212, 165, 116, 0.12);
+      color: #d4a574 !important;
+      font-weight: 600;
+      border: 2px solid #d4a574;
+      margin-left: 10px;
+      box-shadow: 0 2px 8px rgba(212, 165, 116, 0.15);
+    }
+    .youtube-link:hover {
+      background: rgba(212, 165, 116, 0.28);
+      color: #1a3a4a !important;
+      box-shadow: 0 0 16px rgba(212, 165, 116, 0.45);
+      border-color: #1a3a4a;
     }
     .top-nav a:hover {
       background: rgba(212,165,116,0.12);
@@ -83,29 +126,24 @@
       box-shadow: 0 0 12px rgba(212,165,116,0.6), inset 0 0 12px rgba(212,165,116,0.2);
     }
 
-    /* 複数タイトル画像 */
-    .multi-hero {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      max-width: 900px;
-      margin: 0 auto 32px auto;
-      padding: 18px 0 12px 0;
-      background: linear-gradient(90deg, #f5f1e8 60%, #ede6d3 100%);
-    }
-    .multi-hero-img {
-      width: 100%;
-      height: 140px;
+    /* タイトル画像 */
+    .hero-image {
+      display: block;
+      margin: 32px auto 32px auto;
+      max-width: 90vw;
+      max-height: 180px;
+      width: auto;
+      height: auto;
       object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(26,58,74,0.10), 0 0 0 4px #e6ddd0;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(26,58,74,0.13), 0 0 0 4px #e6ddd0;
       background: #fffdfa;
-      transition: box-shadow 0.3s, transform 0.3s;
       border: 2px solid #e6ddd0;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
-    .multi-hero-img:hover {
-      box-shadow: 0 0 24px 4px #d4a574, 0 4px 16px rgba(26,58,74,0.10);
-      transform: scale(1.04) rotate(-2deg);
+    .hero-image:hover {
+      box-shadow: 0 0 32px 6px #d4a574, 0 4px 16px rgba(26,58,74,0.10);
+      transform: scale(1.03) rotate(-1deg);
       border-color: #d4a574;
       z-index: 2;
     }
@@ -293,16 +331,26 @@
         <a href="gallery.html">ブログ</a>
         <a href="news.html">お知らせ</a>
         <a href="contact.html">お問い合わせ</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="insta-link" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:middle; margin-right:4px;">
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="#d4a574" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5" fill="none" stroke="#d4a574" stroke-width="2"/>
+            <circle cx="17.2" cy="6.8" r="1.2" fill="#d4a574"/>
+          </svg>
+          <span style="font-weight:600; color:#d4a574;">Instagram</span>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="youtube-link" aria-label="YouTube">
+          <svg width="22" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:middle; margin-right:4px;">
+            <rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="#e53935" stroke-width="2"/>
+            <polygon points="10,9 16,12 10,15" fill="#e53935"/>
+          </svg>
+          <span style="font-weight:600; color:#e53935;">YouTube</span>
+        </a>
       </nav>
     </div>
   </header>
 
-  <div class="multi-hero">
-    <img src="タイトル１.png" alt="タイトル1" class="multi-hero-img">
-    <img src="タイトル２.png" alt="タイトル2" class="multi-hero-img">
-    <img src="タイトル3.png" alt="タイトル3" class="multi-hero-img">
-    <img src="タイトル４.png" alt="タイトル4" class="multi-hero-img">
-  </div>
+  <img src="タイトル１.png" alt="タイトル画像" class="hero-image">
 
   <main>
     
@@ -342,7 +390,15 @@
   </main>
 
   <footer>
-    © 2026 テスト 
+    © 2026 テスト ｜
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:middle; margin-right:4px;">
+        <rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="#d4a574" stroke-width="2"/>
+        <circle cx="12" cy="12" r="5" fill="none" stroke="#d4a574" stroke-width="2"/>
+        <circle cx="17.2" cy="6.8" r="1.2" fill="#d4a574"/>
+      </svg>
+      Instagram
+    </a>
   </footer>
 
 </body>
