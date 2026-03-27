@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テスト | 和のぬくもり</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Noto Serif JP", serif;
+      background: linear-gradient(135deg, #f5f1e8 0%, #ede6d3 100%);
+      color: #2c2416;
+      line-height: 1.8;
+    }
+    
+    /* ヘッダー */
+    header {
+      background: linear-gradient(to bottom, #1a3a4a, #2d5a6a);
+      color: #f5f1e8;
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 8px solid #d4a574;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: rgba(212, 165, 116, 0.1);
+      border-radius: 50%;
+    }
+    
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0;
+      letter-spacing: 0.15em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    header .subtitle {
+      font-size: 1rem;
+      margin-top: 12px;
+      opacity: 0.95;
+      letter-spacing: 0.08em;
+    }
+    
+    /* 英語タグ */
+    .tagline {
+      font-size: 0.85rem;
+      color: #d4a574;
+      margin-top: 8px;
+      letter-spacing: 0.12em;
+    }
+
+    /* ナビ */
+    .top-nav {
+      margin-top: 14px;
+    }
+    .top-nav a {
+      color: #f5f1e8;
+      text-decoration: none;
+      margin: 0 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    .top-nav a:hover {
+      background: rgba(212,165,116,0.12);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(212,165,116,0.6), inset 0 0 12px rgba(212,165,116,0.2);
+    }
+
+    /* 複数タイトル画像 */
+    .multi-hero {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto 32px auto;
+      padding: 18px 0 12px 0;
+      background: linear-gradient(90deg, #f5f1e8 60%, #ede6d3 100%);
+    }
+    .multi-hero-img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(26,58,74,0.10), 0 0 0 4px #e6ddd0;
+      background: #fffdfa;
+      transition: box-shadow 0.3s, transform 0.3s;
+      border: 2px solid #e6ddd0;
+    }
+    .multi-hero-img:hover {
+      box-shadow: 0 0 24px 4px #d4a574, 0 4px 16px rgba(26,58,74,0.10);
+      transform: scale(1.04) rotate(-2deg);
+      border-color: #d4a574;
+      z-index: 2;
+    }
+    
+    /* メインコンテンツ */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      color: #1a3a4a;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #d4a574, transparent);
+    }
+    
+    /* カードグリッド */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(26, 58, 74, 0.12);
+      border-left: 5px solid #d4a574;
+      transition: all 0.3s ease;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #2d5a6a, transparent);
+    }
+    
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 0 4px rgba(212,165,116,0.25), 0 12px 32px rgba(26, 58, 74, 0.18);
+      border-color: #ffd699;
+      z-index: 1;
+    }
+    
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .card h2 {
+      font-size: 1.4rem;
+      color: #1a3a4a;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+    
+    /* About セクション */
+    .about-section {
+      background: linear-gradient(135deg, rgba(26, 58, 74, 0.05), rgba(212, 165, 116, 0.05));
+      padding: 40px;
+      border-radius: 8px;
+      border-left: 5px solid #d4a574;
+      margin-bottom: 60px;
+    }
+    
+    .about-section h3 {
+      color: #1a3a4a;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    
+    .about-section p {
+      color: #555;
+      line-height: 1.9;
+      margin-bottom: 15px;
+    }
+    
+    /* CTA ボタン */
+    .cta-container {
+      text-align: center;
+      margin: 60px 0;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #1a3a4a, #2d5a6a);
+      color: #f5f1e8;
+      padding: 16px 40px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    
+    .cta-button:hover {
+      background: transparent;
+      color: #1a3a4a;
+      border-color: #1a3a4a;
+      transform: scale(1.05);
+    }
+    
+    /* フッター */
+    footer {
+      background: #1a3a4a;
+      color: #d4a574;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 4px solid #d4a574;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+    }
+    
+    footer a {
+      color: #d4a574;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    footer a:hover {
+      box-shadow: 0 0 12px rgba(212, 165, 116, 0.6);
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 16px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .cards-grid {
+        gap: 20px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <h1>👊テスト👊</h1>
+      <p class="subtitle">テスト</p>
+      <div class="tagline">テスト文字</div>
+      <nav class="top-nav">
+        <a href="index.html">ホーム</a>
+        <a href="history.html">歴史</a>
+        <a href="gallery.html">ブログ</a>
+        <a href="news.html">お知らせ</a>
+        <a href="contact.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="multi-hero">
+    <img src="タイトル１.png" alt="タイトル1" class="multi-hero-img">
+    <img src="タイトル２.png" alt="タイトル2" class="multi-hero-img">
+    <img src="タイトル3.png" alt="タイトル3" class="multi-hero-img">
+    <img src="タイトル４.png" alt="タイトル4" class="multi-hero-img">
+  </div>
+
+  <main>
+    
+    <section class="about-section">
+      <h3>教訓</h3>
+      <p>壱、テストは、日本の伝統と最新技術が融合したサービスを提供します。お客様一人ひとりの想いを大切にし、心に響く体験をお届けします。</p>
+      <p>弐、「和」の心を基本に、お客様との信頼関係を何より大切にしています。</p>
+    </section>
+
+    <h2 class="section-title">わたしたちのサービス</h2>
+    
+    <div class="cards-grid">
+      <a class="card" href="history.html">
+        <div class="card-icon">📚</div>
+        <h2>歴史</h2>
+        <p>〇〇の歴史（時系列）</p>
+      </a>
+
+      <a class="card" href="gallery.html">
+        <div class="card-icon">📸</div>
+        <h2>ブログ</h2>
+        <p>大切な瞬間を写真で紹介します。</p>
+      </a>
+
+      <a class="card" href="news.html">
+        <div class="card-icon">📢</div>
+        <h2>お知らせ</h2>
+        <p>直近のお知らせを確認できます。</p>
+      </a>
+
+    </div>
+
+    <div class="cta-container">
+      <a href="contact.html" class="cta-button">お気軽にお問い合わせください</a>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 テスト 
+  </footer>
+
+</body>
+</html>
